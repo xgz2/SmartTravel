@@ -12,6 +12,7 @@
 		0330D3C123B80CD400ACDF9F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0330D3C023B80CD400ACDF9F /* Preview Assets.xcassets */; };
 		0330D3C423B80CD400ACDF9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0330D3C223B80CD400ACDF9F /* LaunchScreen.storyboard */; };
 		0330D3CC23B815CD00ACDF9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330D3CB23B815CD00ACDF9F /* ViewController.swift */; };
+		230C922AFD73E3B15338282F /* Pods_SmartTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E81AB4DFA76C9BD74CCCA7F /* Pods_SmartTravel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		0330D3C323B80CD400ACDF9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0330D3C523B80CD400ACDF9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0330D3CB23B815CD00ACDF9F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1E81AB4DFA76C9BD74CCCA7F /* Pods_SmartTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C92482F52FB1466C8D10EB8E /* Pods-SmartTravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTravel.release.xcconfig"; path = "Target Support Files/Pods-SmartTravel/Pods-SmartTravel.release.xcconfig"; sourceTree = "<group>"; };
+		E473A73A4A3DB6487704BEAF /* Pods-SmartTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTravel.debug.xcconfig"; path = "Target Support Files/Pods-SmartTravel/Pods-SmartTravel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				230C922AFD73E3B15338282F /* Pods_SmartTravel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				0330D3B623B80CCF00ACDF9F /* SmartTravel */,
 				0330D3B523B80CCF00ACDF9F /* Products */,
+				A7AC1B4881B72EEF247AEA44 /* Pods */,
+				B0C02086F6CC71C294FA6EA7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +79,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A7AC1B4881B72EEF247AEA44 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E473A73A4A3DB6487704BEAF /* Pods-SmartTravel.debug.xcconfig */,
+				C92482F52FB1466C8D10EB8E /* Pods-SmartTravel.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B0C02086F6CC71C294FA6EA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E81AB4DFA76C9BD74CCCA7F /* Pods_SmartTravel.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0330D3C823B80CD400ACDF9F /* Build configuration list for PBXNativeTarget "SmartTravel" */;
 			buildPhases = (
+				36DFF60D42B0E90F04C98AE1 /* [CP] Check Pods Manifest.lock */,
 				0330D3B023B80CCF00ACDF9F /* Sources */,
 				0330D3B123B80CCF00ACDF9F /* Frameworks */,
 				0330D3B223B80CCF00ACDF9F /* Resources */,
+				8C444695956CC0060EF6DB2E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,6 +164,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		36DFF60D42B0E90F04C98AE1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartTravel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C444695956CC0060EF6DB2E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartTravel/Pods-SmartTravel-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartTravel/Pods-SmartTravel-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartTravel/Pods-SmartTravel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0330D3B023B80CCF00ACDF9F /* Sources */ = {
@@ -278,6 +347,7 @@
 		};
 		0330D3C923B80CD400ACDF9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E473A73A4A3DB6487704BEAF /* Pods-SmartTravel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +367,7 @@
 		};
 		0330D3CA23B80CD400ACDF9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C92482F52FB1466C8D10EB8E /* Pods-SmartTravel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
