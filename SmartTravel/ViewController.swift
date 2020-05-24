@@ -10,40 +10,54 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var planButton: UIButton!
-    var funButton: UIButton!
-    var creditButton: UIButton!
+    var addButton: UIButton!
+    var displayTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "SmartTravel Index"
-        
+        title = "Plan your trip"
         view.backgroundColor = .white
-        planButton = UIButton()
-        planButton.backgroundColor = .white
-        planButton.addTarget(self, action: #selector(planButtonPressed), for: .touchUpInside)
-        planButton.setTitle("Plan Trip", for: .normal)
-        planButton.setTitleColor(.systemBlue, for: .normal)
-        planButton.layer.borderColor = UIColor.systemBlue.cgColor
-        planButton.layer.borderWidth = 1
-        planButton.translatesAutoresizingMaskIntoConstraints = false
-        planButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        view.addSubview(planButton)
+        
+        addButton = UIButton()
+        addButton.backgroundColor = .white
+        addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        addButton.setTitle("Plan Trip", for: .normal)
+        addButton.setTitleColor(.systemBlue, for: .normal)
+        addButton.layer.borderColor = UIColor.systemBlue.cgColor
+        addButton.layer.borderWidth = 1
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        view.addSubview(addButton)
+        
+        displayTextView = UITextView()
+        displayTextView.translatesAutoresizingMaskIntoConstraints = false
+        displayTextView.isEditable = false
+        displayTextView.text = "test"
+        displayTextView.layer.borderColor = UIColor.systemBlue.cgColor
+        displayTextView.layer.borderWidth = 1
+        displayTextView.textColor = .black
+        view.addSubview(displayTextView)
         
         setupConstraints()
     }
 
-    @objc func planButtonPressed() {
+    @objc func addButtonPressed() {
         let viewController = PlanViewController()
         navigationController?.pushViewController(viewController, animated: true)
-        print("A")
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            planButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            planButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+        ])
+        
+        NSLayoutConstraint.activate([
+            displayTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            displayTextView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 20),
+            displayTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            displayTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            displayTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
         ])
     }
 }

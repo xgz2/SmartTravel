@@ -26,7 +26,7 @@ class PlanViewController: UIViewController {
         title = "Plan a Trip"
         view.backgroundColor = .red
         
-        let camera = GMSCameraPosition.camera(withLatitude: 1.285, longitude: 103.848, zoom: 12)
+        let camera = GMSCameraPosition.camera(withLatitude: 1.285, longitude: 103.848, zoom: 9)
         mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         self.view = mapView
         
