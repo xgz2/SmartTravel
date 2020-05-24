@@ -6,20 +6,27 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (3.6.0):
     - GoogleMaps/Base (= 3.6.0)
+  - Keys (1.0.1)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - Keys (from `Pods/CocoaPodsKeys`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - GoogleMaps
     - GooglePlaces
 
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
+
 SPEC CHECKSUMS:
   GoogleMaps: 82f8fe307193bb4de6ef6bf9e88f1d624b718f9d
   GooglePlaces: 1b9d29cf3e164903d873600f511f42acdfe85294
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
 
-PODFILE CHECKSUM: 070a066bcb271b20bbbea052c7b300c6ba159c00
+PODFILE CHECKSUM: c0fa0bc027d04c7523128deaab862d8fe7c1c660
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.2

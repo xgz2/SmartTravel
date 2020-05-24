@@ -111,6 +111,7 @@
 				0330D3B123B80CCF00ACDF9F /* Frameworks */,
 				0330D3B223B80CCF00ACDF9F /* Resources */,
 				8C444695956CC0060EF6DB2E /* [CP] Copy Pods Resources */,
+				D8F77234A446FC4BA62A5FFE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -205,6 +206,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartTravel/Pods-SmartTravel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8F77234A446FC4BA62A5FFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartTravel/Pods-SmartTravel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartTravel/Pods-SmartTravel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartTravel/Pods-SmartTravel-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -8,4 +8,12 @@ target 'SmartTravel' do
   # Pods for SmartTravel
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+
+plugin 'cocoapods-keys', {
+  :project => "SmartTravel",
+  :target => "SmartTravel",
+  :keys => [
+    "GoogleAPIKey"
+  ]
+}
 end

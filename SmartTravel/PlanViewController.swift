@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class PlanViewController: UIViewController {
     
@@ -18,12 +19,17 @@ class PlanViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var back: UIBarButtonItem!
+    var mapView : GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Plan a Trip"
         view.backgroundColor = .red
+        
+        let camera = GMSCameraPosition.camera(withLatitude: 1.285, longitude: 103.848, zoom: 12)
+        mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+        self.view = mapView
+        
         
     }
 

@@ -6,6 +6,7 @@
 //  Copyright © 2019 George Zhuang. All rights reserved.
 //
 
+import Keys
 import UIKit
 import GoogleMaps
 
@@ -15,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        GMSServices.provideAPIKey("AIzaSyBF7ztT-DrbAmvMvgYFFqHDMII5mjVaQyI")
+        let keys = SmartTravelKeys()
+        GMSServices.provideAPIKey(keys.googleAPIKey)
     
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: ViewController())
