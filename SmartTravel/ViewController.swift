@@ -10,8 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var imageView: UIImageView!
+    let imageViewLength: CGFloat = 64
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
 
         // Do any additional setup after loading the view.
     }
