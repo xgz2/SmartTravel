@@ -10,26 +10,40 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var imageView: UIImageView!
-    let imageViewLength: CGFloat = 64
+    var planButton: UIButton!
+    var funButton: UIButton!
+    var creditButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "SmartTravel Index"
+        
         view.backgroundColor = .white
+        planButton = UIButton()
+        planButton.backgroundColor = .white
+        planButton.addTarget(self, action: #selector(planButtonPressed), for: .touchUpInside)
+        planButton.setTitle("Plan Trip", for: .normal)
+        planButton.setTitleColor(.systemBlue, for: .normal)
+        planButton.layer.borderColor = UIColor.systemBlue.cgColor
+        planButton.layer.borderWidth = 1
+        planButton.translatesAutoresizingMaskIntoConstraints = false
+        planButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        view.addSubview(planButton)
+        
+        setupConstraints()
+    }
 
-        // Do any additional setup after loading the view.
+    @objc func planButtonPressed() {
+        let viewController = PlanViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+        print("A")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            planButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            planButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+        ])
     }
-    */
-
 }
