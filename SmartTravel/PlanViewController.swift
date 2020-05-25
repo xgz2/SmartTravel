@@ -21,6 +21,9 @@ class PlanViewController: UIViewController, GMSMapViewDelegate {
     }
     
     var mapView : GMSMapView!
+    var saveCoord : CLLocationCoordinate2D?
+    var save : UIBarButtonItem!
+    var delegate : AddLocationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +40,22 @@ class PlanViewController: UIViewController, GMSMapViewDelegate {
         mapView.settings.rotateGestures = true
         mapView.delegate = self
         self.view = mapView
+        
+        save = UIBarButtonItem()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveTapped))
+    }
+    
+    @objc func saveTapped(sender: UIBarButtonItem) {
+        if let location = saveCoord {
+            delegate?.addLocation(to: location)
+        }
     }
     
     // MARK: GMSMapViewDelegate
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print("\(coordinate.latitude) \(coordinate.longitude)")
+        saveCoord = coordinate
     }
 
 }

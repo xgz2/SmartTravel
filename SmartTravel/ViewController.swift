@@ -7,20 +7,23 @@
 //
 
 import UIKit
+import GoogleMaps
+
+protocol AddLocationDelegate: class  {
+    func addLocation(to newLocation: CLLocationCoordinate2D)
+}
 
 class ViewController: UIViewController {
 
     var addButton: UIButton!
+    var locationList : Dictionary<Double, Double> = [:]
     var displayTextView: UITextView!
-    
-//    protocol AddLocationDelegate: class  {
-//        func addLocation(
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Plan your trip"
         view.backgroundColor = .white
+
         
         addButton = UIButton()
         addButton.backgroundColor = .white
@@ -46,6 +49,7 @@ class ViewController: UIViewController {
 
     @objc func addButtonPressed() {
         let viewController = PlanViewController()
+        viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -62,5 +66,16 @@ class ViewController: UIViewController {
             displayTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             displayTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
         ])
+    }
+}
+
+extension ViewController: AddLocationDelegate {
+    func addLocation(to newLocation: CLLocationCoordinate2D) {
+        locationList[newLocation.latitude] = newLocation.longitude
+        var text = ""
+        for (lat, long) in locationList {
+            text = text + ("\n\(lat) \(long)")
+        }
+        displayTextView.text = text
     }
 }
