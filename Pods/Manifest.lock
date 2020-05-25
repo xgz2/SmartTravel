@@ -1,11 +1,11 @@
 PODS:
-  - GoogleMaps (3.6.0):
-    - GoogleMaps/Maps (= 3.6.0)
-  - GoogleMaps/Base (3.6.0)
-  - GoogleMaps/Maps (3.6.0):
+  - GoogleMaps (3.8.2):
+    - GoogleMaps/Maps (= 3.8.2)
+  - GoogleMaps/Base (3.8.2)
+  - GoogleMaps/Maps (3.8.2):
     - GoogleMaps/Base
-  - GooglePlaces (3.6.0):
-    - GoogleMaps/Base (= 3.6.0)
+  - GooglePlaces (3.8.2):
+    - GoogleMaps/Base (= 3.8.2)
   - Keys (1.0.1)
 
 DEPENDENCIES:
@@ -23,8 +23,8 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
-  GoogleMaps: 82f8fe307193bb4de6ef6bf9e88f1d624b718f9d
-  GooglePlaces: 1b9d29cf3e164903d873600f511f42acdfe85294
+  GoogleMaps: ae0efe10e9c40bcd9decd0c9fd53d947af7801a3
+  GooglePlaces: 8baf0c60e318431ca3c1b022f2745a23b104caca
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
 
 PODFILE CHECKSUM: c0fa0bc027d04c7523128deaab862d8fe7c1c660

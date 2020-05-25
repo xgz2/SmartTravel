@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     var addButton: UIButton!
     var displayTextView: UITextView!
     
+//    protocol AddLocationDelegate: class  {
+//        func addLocation(
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Plan your trip"
@@ -32,7 +36,6 @@ class ViewController: UIViewController {
         displayTextView = UITextView()
         displayTextView.translatesAutoresizingMaskIntoConstraints = false
         displayTextView.isEditable = false
-        displayTextView.text = "test"
         displayTextView.layer.borderColor = UIColor.systemBlue.cgColor
         displayTextView.layer.borderWidth = 1
         displayTextView.textColor = .black
