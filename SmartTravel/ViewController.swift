@@ -16,14 +16,20 @@ protocol AddLocationDelegate: class  {
 class ViewController: UIViewController {
 
     var addButton: UIButton!
-    var locationList = [(String, Double, Double)]()
+    
+    var locations = [Location]()
+    var tripTableView: UITableView!
+    let cellHeight: CGFloat = 68
+    var cell: LocationTableViewCell?
+    let reuseIdentifier = "locationCellReuse"
+    var thePath: IndexPath?
+    
     var displayTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Plan your trip"
+        title = "Home"
         view.backgroundColor = .white
-
         
         addButton = UIButton()
         addButton.backgroundColor = .white
@@ -36,13 +42,15 @@ class ViewController: UIViewController {
         addButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         view.addSubview(addButton)
         
-        displayTextView = UITextView()
-        displayTextView.translatesAutoresizingMaskIntoConstraints = false
-        displayTextView.isEditable = false
-        displayTextView.layer.borderColor = UIColor.systemBlue.cgColor
-        displayTextView.layer.borderWidth = 1
-        displayTextView.textColor = .black
-        view.addSubview(displayTextView)
+        tripTableView = UITableView()
+        tripTableView.dataSource = self
+        tripTableView.delegate = self
+        tripTableView.translatesAutoresizingMaskIntoConstraints = false
+        tripTableView.register(LocationTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tripTableView.layer.borderColor = UIColor.systemBlue.cgColor
+        tripTableView.layer.borderWidth = 1
+        tripTableView.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        view.addSubview(tripTableView)
         
         setupConstraints()
     }
@@ -60,11 +68,11 @@ class ViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            displayTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            displayTextView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 20),
-            displayTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            displayTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            displayTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+            tripTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            tripTableView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 20),
+            tripTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            tripTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            tripTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
         ])
     }
 }
@@ -78,15 +86,29 @@ extension ViewController: AddLocationDelegate {
             if let error = error {
                 print(error)
             }
-            if let response = response {
-                if let newAddress = response.firstResult() {
-                    address = newAddress.thoroughfare!
-                }
-            }
-            self.locationList.append((address, newLocation.latitude, newLocation.longitude))
-            var text = ""
-            for (name, lat, long) in self.locationList {text = text + ("\n\(name) \(lat) \(long)")}
-            self.displayTextView.text = text
+            address = response?.firstResult()?.thoroughfare ?? address
+            self.locations.append(Location(address: address, latitude: newLocation.latitude, longitude: newLocation.longitude))
+            self.tripTableView.reloadData()
         })
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return locations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! LocationTableViewCell
+        let location = locations[indexPath.row]
+        cell.configure(for: location)
+        cell.selectionStyle = .none
+        return cell
+    }
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
     }
 }

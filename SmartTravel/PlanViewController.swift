@@ -43,6 +43,8 @@ class PlanViewController: UIViewController, GMSMapViewDelegate {
         
         save = UIBarButtonItem()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveTapped))
+        
+    
     }
     
     @objc func saveTapped(sender: UIBarButtonItem) {
