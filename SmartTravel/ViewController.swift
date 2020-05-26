@@ -16,7 +16,7 @@ protocol AddLocationDelegate: class  {
 class ViewController: UIViewController {
 
     var addButton: UIButton!
-    var locationList : Dictionary<Double, Double> = [:]
+    var locationList = [(String, Double, Double)]()
     var displayTextView: UITextView!
     
     override func viewDidLoad() {
@@ -71,11 +71,22 @@ class ViewController: UIViewController {
 
 extension ViewController: AddLocationDelegate {
     func addLocation(to newLocation: CLLocationCoordinate2D) {
-        locationList[newLocation.latitude] = newLocation.longitude
-        var text = ""
-        for (lat, long) in locationList {
-            text = text + ("\n\(lat) \(long)")
-        }
-        displayTextView.text = text
+        let geocoder = GMSGeocoder()
+        var address = "Unfound"
+        geocoder.reverseGeocodeCoordinate(newLocation, completionHandler: {
+            (response, error) in
+            if let error = error {
+                print(error)
+            }
+            if let response = response {
+                if let newAddress = response.firstResult() {
+                    address = newAddress.thoroughfare!
+                }
+            }
+            self.locationList.append((address, newLocation.latitude, newLocation.longitude))
+            var text = ""
+            for (name, lat, long) in self.locationList {text = text + ("\n\(name) \(lat) \(long)")}
+            self.displayTextView.text = text
+        })
     }
 }

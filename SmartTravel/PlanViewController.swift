@@ -49,12 +49,16 @@ class PlanViewController: UIViewController, GMSMapViewDelegate {
         if let location = saveCoord {
             delegate?.addLocation(to: location)
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: GMSMapViewDelegate
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print("\(coordinate.latitude) \(coordinate.longitude)")
+        mapView.clear()
+        let marker = GMSMarker(position: coordinate)
+        marker.title = "Location"
+        marker.map = mapView
         saveCoord = coordinate
     }
 
